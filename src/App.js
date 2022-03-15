@@ -13,7 +13,7 @@ const FinalComp = () =>{
     {
       (context) => (
         <div>
-          <h3>Personal Info</h3>
+          <h3>Personal Infos</h3>
           <p>Name: {context.data.name}</p>
           <p>ID: {context.data.id}</p>
           <p>Address: {context.data.address}</p>
