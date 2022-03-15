@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from 'react';
+import Context from './context';
+import Provider from './provider';
 
+const Comp1 = ()=>{
+  return <Comp2/>
+}
+const Comp2 = ()=> {
+  return <FinalComp/>
+}
+const FinalComp = () =>{
+  return <Context.Consumer>
+    {
+      (context) => (
+        <div>
+          <h3>Personal Info</h3>
+          <p>Name: {context.data.name}</p>
+          <p>ID: {context.data.id}</p>
+          <p>Address: {context.data.address}</p>
+          <button onClick={context.changeAddress}>Change Address</button>
+        </div>
+      )
+    }
+  </Context.Consumer>
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+    <Provider>
+    <Comp1/>
+    </Provider>
+    </Fragment>
   );
 }
 
